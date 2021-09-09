@@ -15,6 +15,12 @@ import sys
 
 def maxSubarray(arr):
     # Write your code here
+    
+    # 카데인 알고리즘 적용
+    # 배열을 순서대로 진행하면서, 이전까지의 최대 부분합에 지금 현재의 값을 더해야 최대의 값이 나옴
+    # 그러나, 이전 최대 부분합에 현재 값을 더한 값이 현재 값보다 작으면 현재 이후 부분합은 현재 값만 이용하는게 최대 부분합
+    # arr[i] = max(arr[i], arr[i-1]+arr[i])
+    
     arr2 = []
     for i in range(len(arr)):
         arr2.append(arr[i])
@@ -23,7 +29,8 @@ def maxSubarray(arr):
         arr2[i] = max(arr2[i],arr2[i-1]+arr2[i])
          
     total1 = max(arr2)
-        
+    
+    # 배열의 양수를 전체 더하면 최대값, 양수가 없다면 음수 중 최대값 1개만 있는 것이 최대값
     total2 = 0
     for i in range(len(arr)):
         if arr[i]>0:
